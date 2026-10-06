@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_stack" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "inverse-on-surface": "#eaf1ff", "on-secondary": "#ffffff", "on-secondary-fixed": "#00201d", "surface-dim": "#cbdbf5", "on-tertiary-fixed": "#2a1700", "on-primary-fixed-variant": "#173bab", "surface-container-lowest": "#ffffff", "inverse-primary": "#b8c4ff", "tertiary": "#4c2e00", "secondary": "#006a61", "on-secondary-fixed-variant": "#005049", "error": "#ba1a1a", "surface-container-low": "#eff4ff", "surface-container-high": "#dce9ff", "on-surface-variant": "#444653", "surface-variant": "#d3e4fe", "secondary-fixed": "#89f5e7", "primary-fixed-dim": "#b8c4ff", "on-surface": "#0b1c30", "primary-container": "#1e40af", "on-primary-fixed": "#001453", "tertiary-fixed-dim": "#ffb95f", "primary": "#00288e", "on-error": "#ffffff", "on-background": "#0b1c30", "background": "#f8f9ff", "surface-container-highest": "#d3e4fe", "inverse-surface": "#213145", "secondary-fixed-dim": "#6bd8cb", "outline-variant": "#c4c5d5", "on-primary": "#ffffff", "surface-bright": "#f8f9ff", "on-tertiary-container": "#ffa929", "error-container": "#ffdad6", "tertiary-container": "#6b4200", "on-error-container": "#93000a", "tertiary-fixed": "#ffddb8", "surface": "#f8f9ff", "surface-container": "#e5eeff", "outline": "#757684", "primary-fixed": "#dde1ff", "on-tertiary": "#ffffff", "surface-tint": "#3755c3", "on-secondary-container": "#006f66", "on-tertiary-fixed-variant": "#653e00", "on-primary-container": "#a8b8ff", "secondary-container": "#86f2e4" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-xs": "0.25rem", "gutter": "1rem", "space-sm": "0.5rem", "space-xl": "2.25rem", "space-lg": "1.5rem", "space-md": "1rem", "margin": "1.25rem" }, "fontFamily": { "body-sm": ["Manrope"], "body-md": ["Manrope"], "headline-sm": ["Manrope"], "headline-lg": ["Manrope"], "headline-xl-mobile": ["Manrope"], "headline-xl": ["Manrope"], "label-sm": ["Manrope"], "label-lg": ["Manrope"], "label-code": ["JetBrains Mono"], "body-lg": ["Manrope"] }, "fontSize": { "body-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "400" }], "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }], "headline-sm": ["18px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "600" }], "headline-xl-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "headline-xl": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.05em", "fontWeight": "600" }], "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "600" }], "label-code": ["14px", { "lineHeight": "20px", "letterSpacing": "0.04em", "fontWeight": "500" }], "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.005em", "fontWeight": "400" }] } } } };</script><style>@layer base{html,body{width:100%;margin:0;padding:0;min-height:100%;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}}</style></head><body class="bg-surface font-body-md text-body-md text-on-surface flex flex-col min-h-screen antialiased"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(11,28,48,0.04)]"><div class="h-16 px-margin flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm min-w-0"><button class="w-11 h-11 -ml-2 flex items-center justify-center rounded-full text-on-surface hover:bg-surface-container-high/60 transition-colors" onclick="history.back()"><span class="material-symbols-outlined text-[22px]">arrow_back_ios_new</span></button><img alt="VaultKey Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WQ680LPuB7DbnBGShp8xNRqIpNOSdiT4P2wRbROK3_WcVkKjTZ6qhrF-hof9Ao18x93eZdlZkwEQk5qqBaEfkP6zcZjwcBSpPgMpOMAcAXba8GcLNu-wfdo5_gD2q3kRuCXjmc4lOxSNGsoZWqtgoyKDzhiAf-e9uM7J0CSb3ZXIFc5gzivtfx_a0UAsQ6-VcDwjghR2O23ubfzRL0AVh5NPElGaikuegBh7peNZRQtPRyAi6GoDo7WEA"/><h1 class="font-headline-sm text-headline-sm text-on-surface font-semibold truncate">Settings</h1></div><div class="flex items-center gap-space-xs shrink-0"><div class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-secondary-fixed/40 text-on-secondary-fixed select-none"><span class="material-symbols-outlined text-[14px] text-secondary font-semibold">check</span><span class="font-label-sm text-label-sm text-secondary font-semibold">Synced</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center ml-1"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex-1 flex flex-col relative w-full pt-16 pb-safe bg-surface px-margin"><div class="flex flex-col w-full pb-12">
+<!-- Visual Hero / Calming Status Banner -->
+<div class="relative w-full rounded-2xl p-space-lg bg-surface-container-low shadow-sm overflow-hidden mb-space-lg">
+<div class="absolute -right-6 -bottom-6 w-32 h-32 rounded-full bg-secondary-fixed/30 blur-2xl pointer-events-none"></div>
+<div class="flex items-start justify-between relative z-10">
+<div class="flex flex-col gap-1 max-w-[70%]">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed w-fit font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[13px] text-secondary">verified_user</span>
+          Zero-Knowledge Active
+        </span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface mt-1">Peace of mind, crafted in privacy</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Your master seed never leaves this hardware enclave.</p>
+</div>
+<button class="flex flex-col items-center justify-center w-12 h-12 rounded-xl bg-surface-container-high text-primary hover:bg-primary hover:text-on-primary transition-all shadow-sm active:scale-95" id="trigger-lock-btn" title="Lock Vault Now">
+<span class="material-symbols-outlined text-[22px]">lock</span>
+<span class="font-label-sm text-[9px] uppercase tracking-wider mt-0.5">Lock</span>
+</button>
+</div>
+</div>
+<!-- Main Settings Vertical Flow -->
+<div class="flex flex-col gap-space-lg w-full">
+<!-- Section 1: Security -->
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between px-1">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Security &amp; Access</span>
+<span class="font-label-sm text-label-sm text-secondary font-medium">High Protection</span>
+</div>
+<div class="flex flex-col bg-surface-container-lowest rounded-2xl shadow-sm overflow-hidden">
+<!-- Change PIN -->
+<button class="flex items-center justify-between p-space-md bg-surface-container-lowest hover:bg-surface-container-low transition-colors text-left w-full group" id="change-pin-btn">
+<div class="flex items-center gap-space-md min-w-0">
+<div class="w-10 h-10 rounded-xl bg-surface-container-low text-primary flex items-center justify-center group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[20px]">pin</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-lg text-label-lg text-on-surface truncate">Change Security PIN</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">6-digit hardware passcode</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline text-[20px] ml-2">chevron_right</span>
+</button>
+<!-- Divider hairline -->
+<div class="h-[1px] bg-surface-container ml-14"></div>
+<!-- Biometric Unlock Toggle -->
+<div class="flex items-center justify-between p-space-md">
+<div class="flex items-center gap-space-md min-w-0">
+<div class="w-10 h-10 rounded-xl bg-secondary-fixed/40 text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">fingerprint</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-lg text-label-lg text-on-surface truncate">Biometric Unlock</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">FaceID or Fingerprint sensor</span>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer ml-3 shrink-0">
+<input checked="" class="sr-only peer" id="biometric-toggle" type="checkbox"/>
+<div class="w-12 h-7 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-6 after:w-6 after:transition-all after:shadow-sm peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<!-- Divider hairline -->
+<div class="h-[1px] bg-surface-container ml-14"></div>
+<!-- Auto-Lock Selector -->
+<button class="flex items-center justify-between p-space-md bg-surface-container-lowest hover:bg-surface-container-low transition-colors text-left w-full group" id="open-autolock-modal">
+<div class="flex items-center gap-space-md min-w-0">
+<div class="w-10 h-10 rounded-xl bg-surface-container-low text-primary flex items-center justify-center group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[20px]">timer</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-lg text-label-lg text-on-surface truncate">Auto-Lock Vault</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Locks when backgrounded</span>
+</div>
+</div>
+<div class="flex items-center gap-1.5 ml-2 shrink-0">
+<span class="font-label-sm text-label-sm px-2.5 py-1 rounded-full bg-surface-container text-on-surface-variant font-semibold" id="current-autolock-val">5 minutes</span>
+<span class="material-symbols-outlined text-outline text-[20px]">expand_more</span>
+</div>
+</button>
+</div>
+</div>
+<!-- Section 2: Backup & Sync -->
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between px-1">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Sync &amp; Redundancy</span>
+<span class="font-label-sm text-label-sm text-outline">Encrypted</span>
+</div>
+<div class="flex flex-col bg-surface-container-lowest rounded-2xl shadow-sm overflow-hidden">
+<!-- Cloud Sync Toggle -->
+<div class="flex items-center justify-between p-space-md">
+<div class="flex items-center gap-space-md min-w-0">
+<div class="w-10 h-10 rounded-xl bg-surface-container-low text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">cloud_sync</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-lg text-label-lg text-on-surface truncate">Zero-Knowledge Cloud Sync</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">AES-256 E2EE replication</span>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer ml-3 shrink-0">
+<input checked="" class="sr-only peer" id="sync-toggle" type="checkbox"/>
+<div class="w-12 h-7 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-6 after:w-6 after:transition-all after:shadow-sm peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<!-- Divider hairline -->
+<div class="h-[1px] bg-surface-container ml-14"></div>
+<!-- Last Synced & Trigger -->
+<div class="flex items-center justify-between p-space-md">
+<div class="flex items-center gap-space-md min-w-0">
+<div class="w-10 h-10 rounded-xl bg-secondary-fixed/30 text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">sync</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-lg text-label-lg text-on-surface truncate">Last Synchronized</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant" id="sync-timestamp">Just now • Secure cluster EU-1</span>
+</div>
+</div>
+<button class="p-2 rounded-full text-on-surface-variant hover:bg-surface-container-low transition-all active:rotate-180 duration-500" id="sync-refresh-btn">
+<span class="material-symbols-outlined text-[20px] text-secondary">cached</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Section 3: Recovery -->
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between px-1">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Emergency Recovery</span>
+<span class="font-label-sm text-label-sm text-secondary font-semibold">Ready</span>
+</div>
+<div class="flex flex-col bg-surface-container-lowest rounded-2xl shadow-sm overflow-hidden">
+<!-- Recovery Questions -->
+<button class="flex items-center justify-between p-space-md bg-surface-container-lowest hover:bg-surface-container-low transition-colors text-left w-full group" id="rec-questions-btn">
+<div class="flex items-center gap-space-md min-w-0">
+<div class="w-10 h-10 rounded-xl bg-surface-container-low text-primary flex items-center justify-center group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[20px]">quiz</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-lg text-label-lg text-on-surface truncate">Recovery Questions</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Personalized security challenge</span>
+</div>
+</div>
+<div class="flex items-center gap-1.5 ml-2 shrink-0">
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-secondary-fixed/50 text-secondary font-semibold">3 configured</span>
+<span class="material-symbols-outlined text-outline text-[20px]">chevron_right</span>
+</div>
+</button>
+<!-- Divider hairline -->
+<div class="h-[1px] bg-surface-container ml-14"></div>
+<!-- Master Recovery Key -->
+<button class="flex items-center justify-between p-space-md bg-surface-container-lowest hover:bg-surface-container-low transition-colors text-left w-full group" id="view-key-btn">
+<div class="flex items-center gap-space-md min-w-0">
+<div class="w-10 h-10 rounded-xl bg-tertiary-fixed text-tertiary flex items-center justify-center group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[20px]">vpn_key</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-lg text-label-lg text-on-surface truncate">Emergency Recovery Key</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">24-word offline phrase</span>
+</div>
+</div>
+<div class="flex items-center gap-1.5 ml-2 shrink-0">
+<span class="font-label-sm text-label-sm text-primary font-semibold">View &amp; export</span>
+<span class="material-symbols-outlined text-outline text-[20px]">chevron_right</span>
+</div>
+</button>
+</div>
+</div>
+<!-- Section 4: Appearance (Interactive Theme Switcher) -->
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between px-1">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Appearance</span>
+<span class="font-label-sm text-label-sm text-outline">Editorial Calm</span>
+</div>
+<div class="bg-surface-container-lowest rounded-2xl p-space-md shadow-sm">
+<div class="grid grid-cols-3 gap-2 p-1 bg-surface-container rounded-xl">
+<button class="theme-opt flex flex-col items-center justify-center py-2.5 px-2 rounded-lg bg-surface-container-lowest text-primary shadow-sm font-label-sm text-label-sm font-semibold transition-all" id="theme-light-btn">
+<span class="material-symbols-outlined text-[20px] mb-1">light_mode</span>
+            Light
+          </button>
+<button class="theme-opt flex flex-col items-center justify-center py-2.5 px-2 rounded-lg text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm font-medium transition-all" id="theme-dark-btn">
+<span class="material-symbols-outlined text-[20px] mb-1">dark_mode</span>
+            Dark
+          </button>
+<button class="theme-opt flex flex-col items-center justify-center py-2.5 px-2 rounded-lg text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm font-medium transition-all" id="theme-system-btn">
+<span class="material-symbols-outlined text-[20px] mb-1">settings_brightness</span>
+            System
+          </button>
+</div>
+</div>
+</div>
+<!-- Section 5: About & Architecture -->
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between px-1">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">About VaultKey</span>
+<span class="font-label-sm text-label-sm text-outline">v1.2.0</span>
+</div>
+<div class="bg-surface-container-lowest rounded-2xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center gap-space-md">
+<img alt="VaultKey Logo" class="w-12 h-12 rounded-xl object-contain bg-surface-container-low p-1.5 shadow-sm" src="https://lh3.googleusercontent.com/aida/AEtjO1WQ680LPuB7DbnBGShp8xNRqIpNOSdiT4P2wRbROK3_WcVkKjTZ6qhrF-hof9Ao18x93eZdlZkwEQk5qqBaEfkP6zcZjwcBSpPgMpOMAcAXba8GcLNu-wfdo5_gD2q3kRuCXjmc4lOxSNGsoZWqtgoyKDzhiAf-e9uM7J0CSb3ZXIFc5gzivtfx_a0UAsQ6-VcDwjghR2O23ubfzRL0AVh5NPElGaikuegBh7peNZRQtPRyAi6GoDo7WEA"/>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-sm text-headline-sm text-on-surface">VaultKey Safe Haven</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Version 1.2.0 (Build 309)</span>
+</div>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-low flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-[20px] shrink-0 mt-0.5">shield</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">Zero-Knowledge Architecture</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+              Zero-knowledge encryption, keys never leave device. We cannot view, decrypt, or sell your credentials.
+            </p>
+</div>
+</div>
+<div class="flex items-center justify-between pt-1">
+<button class="font-label-sm text-label-sm text-primary hover:underline">Privacy Charter</button>
+<span class="text-outline text-xs">•</span>
+<button class="font-label-sm text-label-sm text-primary hover:underline">Security Audit</button>
+<span class="text-outline text-xs">•</span>
+<button class="font-label-sm text-label-sm text-primary hover:underline">Open Source</button>
+</div>
+</div>
+</div>
+<!-- Quick Lock Test Trigger Button -->
+<button class="w-full py-3.5 px-space-md rounded-2xl bg-surface-container-high text-primary font-label-lg text-label-lg font-semibold flex items-center justify-center gap-2 hover:bg-surface-container-highest transition-all shadow-sm active:scale-98" id="preview-lockscreen-btn">
+<span class="material-symbols-outlined text-[20px]">screen_lock_portrait</span>
+      Simulate Vault Auto-Lock Screen
+    </button>
+</div>
+<!-- Auto-Lock Selection Bottom Modal / Tray -->
+<div class="fixed inset-0 z-50 flex items-end justify-center hidden" id="autolock-modal">
+<!-- Modal Backdrop -->
+<div class="absolute inset-0 bg-inverse-surface/40 backdrop-blur-[4px] transition-opacity" id="autolock-backdrop"></div>
+<!-- Modal Content Tray -->
+<div class="relative w-full max-w-lg bg-surface-container-lowest rounded-t-3xl p-space-lg shadow-2xl flex flex-col gap-space-md z-10 animate-in slide-in-from-bottom duration-300">
+<div class="w-12 h-1.5 bg-outline-variant/60 rounded-full mx-auto mb-1"></div>
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Auto-Lock Timer</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Lock vault after inactivity</p>
+</div>
+<button class="w-9 h-9 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors" id="close-autolock-modal">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<div class="flex flex-col gap-1.5 mt-2" id="autolock-options-group">
+<button class="autolock-option flex items-center justify-between p-3.5 rounded-xl hover:bg-surface-container-low transition-colors text-left" data-duration="Immediately">
+<span class="font-body-lg text-body-lg text-on-surface">Immediately</span>
+<span class="material-symbols-outlined text-[20px] text-primary opacity-0 check-indicator">check_circle</span>
+</button>
+<button class="autolock-option flex items-center justify-between p-3.5 rounded-xl hover:bg-surface-container-low transition-colors text-left" data-duration="1 minute">
+<span class="font-body-lg text-body-lg text-on-surface">1 minute</span>
+<span class="material-symbols-outlined text-[20px] text-primary opacity-0 check-indicator">check_circle</span>
+</button>
+<button class="autolock-option flex items-center justify-between p-3.5 rounded-xl bg-surface-container text-left" data-duration="5 minutes">
+<span class="font-body-lg text-body-lg font-semibold text-primary">5 minutes</span>
+<span class="material-symbols-outlined text-[20px] text-primary check-indicator">check_circle</span>
+</button>
+<button class="autolock-option flex items-center justify-between p-3.5 rounded-xl hover:bg-surface-container-low transition-colors text-left" data-duration="15 minutes">
+<span class="font-body-lg text-body-lg text-on-surface">15 minutes</span>
+<span class="material-symbols-outlined text-[20px] text-primary opacity-0 check-indicator">check_circle</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Recovery Key Export Modal -->
+<div class="fixed inset-0 z-50 flex items-center justify-center p-4 hidden" id="key-modal">
+<div class="absolute inset-0 bg-inverse-surface/40 backdrop-blur-[4px]" id="key-backdrop"></div>
+<div class="relative w-full max-w-sm bg-surface-container-lowest rounded-2xl p-space-lg shadow-2xl flex flex-col gap-space-md z-10">
+<div class="flex items-center gap-space-sm text-tertiary">
+<span class="material-symbols-outlined text-[26px]">vpn_key</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Master Recovery Key</h3>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Store these 24 words securely offline. This grants total unencrypted recovery.</p>
+<div class="p-space-md rounded-xl bg-surface-container-low font-label-code text-label-code text-on-surface select-all leading-relaxed break-words">
+        ember velvet timber harbor quartz mirror anchor galaxy puzzle whisper ripple anchor ember shield beacon matrix pebble cobalt velvet timber quartz mirror galaxy whisper
+      </div>
+<div class="flex gap-2 mt-1">
+<button class="flex-1 py-3 rounded-xl bg-primary text-on-primary font-label-lg text-label-lg font-semibold flex items-center justify-center gap-2 hover:bg-primary-container transition-all" id="copy-key-btn">
+<span class="material-symbols-outlined text-[18px]">content_copy</span>
+<span id="copy-btn-text">Copy Key</span>
+</button>
+<button class="px-4 py-3 rounded-xl bg-surface-container text-on-surface font-label-lg text-label-lg font-semibold hover:bg-surface-container-high transition-all" id="close-key-btn">
+          Close
+        </button>
+</div>
+</div>
+</div>
+<!-- ================================================================ -->
+<!-- FULL SCREEN OVERLAY: Auto-Lock & Unlock Vault Screen             -->
+<!-- ================================================================ -->
+<div class="fixed inset-0 z-[60] bg-surface flex flex-col items-center justify-between p-margin pt-12 pb-safe hidden" id="unlock-overlay">
+<!-- Top Branding & Status Header -->
+<div class="flex flex-col items-center gap-2 text-center w-full max-w-xs mt-2">
+<div class="relative">
+<img alt="VaultKey Logo" class="w-16 h-16 rounded-2xl shadow-md p-2 bg-surface-container-lowest object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WQ680LPuB7DbnBGShp8xNRqIpNOSdiT4P2wRbROK3_WcVkKjTZ6qhrF-hof9Ao18x93eZdlZkwEQk5qqBaEfkP6zcZjwcBSpPgMpOMAcAXba8GcLNu-wfdo5_gD2q3kRuCXjmc4lOxSNGsoZWqtgoyKDzhiAf-e9uM7J0CSb3ZXIFc5gzivtfx_a0UAsQ6-VcDwjghR2O23ubfzRL0AVh5NPElGaikuegBh7peNZRQtPRyAi6GoDo7WEA"/>
+<div class="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-secondary-fixed flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[12px] text-secondary font-bold">lock</span>
+</div>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface font-bold mt-2">Unlock Vault</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Tap fingerprint sensor or enter PIN</p>
+</div>
+<!-- Error State Toast Notification -->
+<div class="w-full max-w-xs transition-all duration-300 opacity-0 pointer-events-none transform -translate-y-2" id="pin-error-toast">
+<div class="p-3.5 rounded-xl bg-error-container text-on-error-container flex items-start gap-2.5 shadow-sm">
+<span class="material-symbols-outlined text-error text-[20px] shrink-0 mt-0.5">error_outline</span>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-label-sm font-bold text-error">Incorrect PIN</span>
+<span class="font-body-sm text-body-sm text-on-error-container">Your vault is still safe on this device. (Hint: 1 2 3 4 5 6)</span>
+</div>
+</div>
+</div>
+<!-- Biometric Fingerprint Sensor Focus with Pulsing Ring -->
+<div class="flex flex-col items-center justify-center my-1 relative">
+<div class="relative flex items-center justify-center">
+<!-- Calming Animated Pulse Rings -->
+<div class="absolute w-28 h-28 rounded-full bg-secondary-fixed/40 animate-ping opacity-30"></div>
+<div class="absolute w-24 h-24 rounded-full bg-secondary-fixed/50 animate-pulse"></div>
+<!-- Biometric Button Trigger -->
+<button class="relative z-10 w-20 h-20 rounded-full bg-secondary-fixed text-secondary flex items-center justify-center shadow-md active:scale-90 transition-transform" id="biometric-trigger">
+<span class="material-symbols-outlined text-[38px]">fingerprint</span>
+</button>
+</div>
+<span class="font-label-sm text-label-sm text-secondary font-semibold mt-3">Touch sensor</span>
+</div>
+<!-- 6-Digit PIN Indicators -->
+<div class="flex flex-col items-center w-full max-w-xs gap-6">
+<div class="flex items-center gap-3.5 justify-center py-2" id="pin-dots-container">
+<div class="pin-dot w-3.5 h-3.5 rounded-full bg-surface-container-highest transition-colors"></div>
+<div class="pin-dot w-3.5 h-3.5 rounded-full bg-surface-container-highest transition-colors"></div>
+<div class="pin-dot w-3.5 h-3.5 rounded-full bg-surface-container-highest transition-colors"></div>
+<div class="pin-dot w-3.5 h-3.5 rounded-full bg-surface-container-highest transition-colors"></div>
+<div class="pin-dot w-3.5 h-3.5 rounded-full bg-surface-container-highest transition-colors"></div>
+<div class="pin-dot w-3.5 h-3.5 rounded-full bg-surface-container-highest transition-colors"></div>
+</div>
+<!-- Numeric Keypad Grid -->
+<div class="grid grid-cols-3 gap-x-6 gap-y-3.5 w-full pb-4">
+<button class="numpad-btn w-16 h-16 mx-auto rounded-full bg-surface-container-lowest text-on-surface font-headline-lg text-headline-lg flex flex-col items-center justify-center shadow-sm active:bg-surface-container-high transition-colors" data-digit="1">
+          1
+          <span class="font-label-sm text-[8px] text-outline -mt-1 font-normal opacity-60"></span>
+</button>
+<button class="numpad-btn w-16 h-16 mx-auto rounded-full bg-surface-container-lowest text-on-surface font-headline-lg text-headline-lg flex flex-col items-center justify-center shadow-sm active:bg-surface-container-high transition-colors" data-digit="2">
+          2
+          <span class="font-label-sm text-[8px] text-outline -mt-1 font-normal opacity-70">ABC</span>
+</button>
+<button class="numpad-btn w-16 h-16 mx-auto rounded-full bg-surface-container-lowest text-on-surface font-headline-lg text-headline-lg flex flex-col items-center justify-center shadow-sm active:bg-surface-container-high transition-colors" data-digit="3">
+          3
+          <span class="font-label-sm text-[8px] text-outline -mt-1 font-normal opacity-70">DEF</span>
+</button>
+<button class="numpad-btn w-16 h-16 mx-auto rounded-full bg-surface-container-lowest text-on-surface font-headline-lg text-headline-lg flex flex-col items-center justify-center shadow-sm active:bg-surface-container-high transition-colors" data-digit="4">
+          4
+          <span class="font-label-sm text-[8px] text-outline -mt-1 font-normal opacity-70">GHI</span>
+</button>
+<button class="numpad-btn w-16 h-16 mx-auto rounded-full bg-surface-container-lowest text-on-surface font-headline-lg text-headline-lg flex flex-col items-center justify-center shadow-sm active:bg-surface-container-high transition-colors" data-digit="5">
+          5
+          <span class="font-label-sm text-[8px] text-outline -mt-1 font-normal opacity-70">JKL</span>
+</button>
+<button class="numpad-btn w-16 h-16 mx-auto rounded-full bg-surface-container-lowest text-on-surface font-headline-lg text-headline-lg flex flex-col items-center justify-center shadow-sm active:bg-surface-container-high transition-colors" data-digit="6">
+          6
+          <span class="font-label-sm text-[8px] text-outline -mt-1 font-normal opacity-70">MNO</span>
+</button>
+<button class="numpad-btn w-16 h-16 mx-auto rounded-full bg-surface-container-lowest text-on-surface font-headline-lg text-headline-lg flex flex-col items-center justify-center shadow-sm active:bg-surface-container-high transition-colors" data-digit="7">
+          7
+          <span class="font-label-sm text-[8px] text-outline -mt-1 font-normal opacity-70">PQRS</span>
+</button>
+<button class="numpad-btn w-16 h-16 mx-auto rounded-full bg-surface-container-lowest text-on-surface font-headline-lg text-headline-lg flex flex-col items-center justify-center shadow-sm active:bg-surface-container-high transition-colors" data-digit="8">
+          8
+          <span class="font-label-sm text-[8px] text-outline -mt-1 font-normal opacity-70">TUV</span>
+</button>
+<button class="numpad-btn w-16 h-16 mx-auto rounded-full bg-surface-container-lowest text-on-surface font-headline-lg text-headline-lg flex flex-col items-center justify-center shadow-sm active:bg-surface-container-high transition-colors" data-digit="9">
+          9
+          <span class="font-label-sm text-[8px] text-outline -mt-1 font-normal opacity-70">WXYZ</span>
+</button>
+<!-- Emergency / Secondary Action -->
+<button class="w-16 h-16 mx-auto rounded-full flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors text-center font-label-sm text-label-sm" id="emergency-rec-btn">
+          Help
+        </button>
+<button class="numpad-btn w-16 h-16 mx-auto rounded-full bg-surface-container-lowest text-on-surface font-headline-lg text-headline-lg flex items-center justify-center shadow-sm active:bg-surface-container-high transition-colors" data-digit="0">
+          0
+        </button>
+<button class="w-16 h-16 mx-auto rounded-full flex items-center justify-center text-on-surface-variant active:text-error transition-colors" id="numpad-backspace">
+<span class="material-symbols-outlined text-[24px]">backspace</span>
+</button>
+</div>
+<!-- Quick Dismiss for UI testing -->
+<button class="font-label-sm text-label-sm text-outline hover:text-on-surface pb-2 underline transition-colors" id="dismiss-unlock-overlay">
+        Cancel &amp; return to Settings
+      </button>
+</div>
+</div>
+</div>
+<script>
+  (function () {
+    // ----------------------------------------------------
+    // Theme Switcher Logic (Live Light / Dark toggle)
+    // ----------------------------------------------------
+    const themeLightBtn = document.getElementById('theme-light-btn');
+    const themeDarkBtn = document.getElementById('theme-dark-btn');
+    const themeSystemBtn = document.getElementById('theme-system-btn');
+    const themeButtons = [themeLightBtn, themeDarkBtn, themeSystemBtn];
+
+    function activateThemeBtn(activeBtn) {
+      themeButtons.forEach(btn => {
+        btn.classList.remove('bg-surface-container-lowest', 'text-primary', 'shadow-sm', 'font-semibold');
+        btn.classList.add('text-on-surface-variant', 'font-medium');
+      });
+      activeBtn.classList.add('bg-surface-container-lowest', 'text-primary', 'shadow-sm', 'font-semibold');
+      activeBtn.classList.remove('text-on-surface-variant', 'font-medium');
+    }
+
+    themeLightBtn.addEventListener('click', () => {
+      document.documentElement.classList.remove('dark');
+      activateThemeBtn(themeLightBtn);
+    });
+
+    themeDarkBtn.addEventListener('click', () => {
+      document.documentElement.classList.add('dark');
+      activateThemeBtn(themeDarkBtn);
+    });
+
+    themeSystemBtn.addEventListener('click', () => {
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+      activateThemeBtn(themeSystemBtn);
+    });
+
+    // ----------------------------------------------------
+    // Auto-Lock Modal Logic
+    // ----------------------------------------------------
+    const autoLockModal = document.getElementById('autolock-modal');
+    const openAutoLockBtn = document.getElementById('open-autolock-modal');
+    const closeAutoLockBtn = document.getElementById('close-autolock-modal');
+    const autoLockBackdrop = document.getElementById('autolock-backdrop');
+    const currentAutoLockVal = document.getElementById('current-autolock-val');
+    const autoLockOptions = document.querySelectorAll('.autolock-option');
+
+    function openModal() {
+      autoLockModal.classList.remove('hidden');
+    }
+
+    function closeModal() {
+      autoLockModal.classList.add('hidden');
+    }
+
+    openAutoLockBtn.addEventListener('click', openModal);
+    closeAutoLockBtn.addEventListener('click', closeModal);
+    autoLockBackdrop.addEventListener('click', closeModal);
+
+    autoLockOptions.forEach(opt => {
+      opt.addEventListener('click', () => {
+        const val = opt.getAttribute('data-duration');
+        currentAutoLockVal.textContent = val;
+
+        // Reset all states
+        autoLockOptions.forEach(item => {
+          item.classList.remove('bg-surface-container');
+          const span = item.querySelector('span:first-child');
+          span.classList.remove('font-semibold', 'text-primary');
+          span.classList.add('text-on-surface');
+          item.querySelector('.check-indicator').classList.add('opacity-0');
+        });
+
+        // Set active state
+        opt.classList.add('bg-surface-container');
+        const textSpan = opt.querySelector('span:first-child');
+        textSpan.classList.add('font-semibold', 'text-primary');
+        textSpan.classList.remove('text-on-surface');
+        opt.querySelector('.check-indicator').classList.remove('opacity-0');
+
+        setTimeout(closeModal, 220);
+      });
+    });
+
+    // ----------------------------------------------------
+    // Cloud Sync Instant Feedback
+    // ----------------------------------------------------
+    const syncRefreshBtn = document.getElementById('sync-refresh-btn');
+    const syncTimestamp = document.getElementById('sync-timestamp');
+    syncRefreshBtn.addEventListener('click', () => {
+      syncRefreshBtn.classList.add('animate-spin');
+      syncTimestamp.textContent = 'Syncing cryptographic diff...';
+      setTimeout(() => {
+        syncRefreshBtn.classList.remove('animate-spin');
+        syncTimestamp.textContent = 'Just now • Secure cluster EU-1';
+      }, 700);
+    });
+
+    // ----------------------------------------------------
+    // Recovery Key Modal & Copy
+    // ----------------------------------------------------
+    const viewKeyBtn = document.getElementById('view-key-btn');
+    const keyModal = document.getElementById('key-modal');
+    const keyBackdrop = document.getElementById('key-backdrop');
+    const closeKeyBtn = document.getElementById('close-key-btn');
+    const copyKeyBtn = document.getElementById('copy-key-btn');
+    const copyBtnText = document.getElementById('copy-btn-text');
+
+    viewKeyBtn.addEventListener('click', () => keyModal.classList.remove('hidden'));
+    closeKeyBtn.addEventListener('click', () => keyModal.classList.add('hidden'));
+    keyBackdrop.addEventListener('click', () => keyModal.classList.add('hidden'));
+
+    copyKeyBtn.addEventListener('click', () => {
+      copyBtnText.textContent = 'Copied to Clipboard!';
+      copyKeyBtn.classList.add('bg-secondary');
+      setTimeout(() => {
+        copyBtnText.textContent = 'Copy Key';
+        copyKeyBtn.classList.remove('bg-secondary');
+      }, 2000);
+    });
+
+    // ----------------------------------------------------
+    // Unlock Overlay & PIN Pad Logic
+    // ----------------------------------------------------
+    const unlockOverlay = document.getElementById('unlock-overlay');
+    const triggerLockBtn = document.getElementById('trigger-lock-btn');
+    const previewLockBtn = document.getElementById('preview-lockscreen-btn');
+    const dismissUnlockOverlay = document.getElementById('dismiss-unlock-overlay');
+    const pinDots = document.querySelectorAll('.pin-dot');
+    const numpadButtons = document.querySelectorAll('.numpad-btn');
+    const backspaceBtn = document.getElementById('numpad-backspace');
+    const errorToast = document.getElementById('pin-error-toast');
+    const biometricTrigger = document.getElementById('biometric-trigger');
+
+    let currentPin = '';
+    const CORRECT_PIN = '123456';
+
+    function showLockScreen() {
+      currentPin = '';
+      updateDots();
+      hideError();
+      unlockOverlay.classList.remove('hidden');
+    }
+
+    function hideLockScreen() {
+      unlockOverlay.classList.add('hidden');
+      currentPin = '';
+      updateDots();
+    }
+
+    triggerLockBtn.addEventListener('click', showLockScreen);
+    previewLockBtn.addEventListener('click', showLockScreen);
+    dismissUnlockOverlay.addEventListener('click', hideLockScreen);
+
+    function updateDots() {
+      pinDots.forEach((dot, index) => {
+        if (index < currentPin.length) {
+          dot.classList.remove('bg-surface-container-highest');
+          dot.classList.add('bg-primary', 'scale-110');
+        } else {
+          dot.classList.add('bg-surface-container-highest');
+          dot.classList.remove('bg-primary', 'scale-110');
+        }
+      });
+    }
+
+    function showError() {
+      errorToast.classList.remove('opacity-0', 'pointer-events-none', '-translate-y-2');
+      pinDots.forEach(dot => {
+        dot.classList.remove('bg-primary');
+        dot.classList.add('bg-error');
+      });
+      setTimeout(() => {
+        currentPin = '';
+        updateDots();
+        pinDots.forEach(dot => dot.classList.remove('bg-error'));
+      }, 800);
+    }
+
+    function hideError() {
+      errorToast.classList.add('opacity-0', 'pointer-events-none', '-translate-y-2');
+    }
+
+    numpadButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (currentPin.length < 6) {
+          hideError();
+          currentPin += btn.getAttribute('data-digit');
+          updateDots();
+
+          if (currentPin.length === 6) {
+            setTimeout(() => {
+              if (currentPin === CORRECT_PIN) {
+                hideLockScreen();
+              } else {
+                showError();
+              }
+            }, 150);
+          }
+        }
+      });
+    });
+
+    backspaceBtn.addEventListener('click', () => {
+      if (currentPin.length > 0) {
+        currentPin = currentPin.slice(0, -1);
+        updateDots();
+        hideError();
+      }
+    });
+
+    // Biometric Instant Unlock Simulation
+    biometricTrigger.addEventListener('click', () => {
+      biometricTrigger.classList.add('scale-110', 'bg-secondary', 'text-on-secondary');
+      setTimeout(() => {
+        biometricTrigger.classList.remove('scale-110', 'bg-secondary', 'text-on-secondary');
+        hideLockScreen();
+      }, 350);
+    });
+
+  })();
+</script></main></body></html>
