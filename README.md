@@ -1,152 +1,195 @@
-# Locker — Local-First Secure Password Vault
+# 🔐 Locker — Simple, Private & Secure Password Vault
 
 <div align="center">
-  <h3>Peace of mind, crafted in privacy.</h3>
-  <p>A single-person, zero-knowledge offline password manager engineered for simplicity and institutional-grade security.</p>
-  <p><strong>Creator & Lead Architect:</strong> Taslim Ahmed Tamim</p>
+
+  <h3>Peace of mind, crafted in complete privacy.</h3>
+  <p>An offline, zero-knowledge mobile password manager engineered to keep your passwords safe, private, and always in your control.</p>
+
+  <p>
+    <strong>👤 Creator & Lead Developer:</strong> <strong>Taslim Ahmed Tamim</strong>
+  </p>
+
+  <p>
+    <a href="https://github.com/taslimahmedtamim/locker/releases"><img src="https://img.shields.io/badge/Download-Locker.apk-blue?style=for-the-badge&logo=android" alt="Download APK" /></a>
+    <img src="https://img.shields.io/badge/Platform-Android-green?style=for-the-badge&logo=flutter" alt="Platform Android" />
+    <img src="https://img.shields.io/badge/Privacy-100%25%20Offline-orange?style=for-the-badge" alt="100% Offline" />
+    <img src="https://img.shields.io/badge/Security-AES--256--GCM-red?style=for-the-badge" alt="AES-256-GCM" />
+  </p>
+
 </div>
 
 ---
 
-## 1. What is Locker?
-Locker is an offline, local-first mobile password manager tailored for users who value absolute privacy and simplicity. It dispenses with cybersecurity cliches in favor of an editorial, calming aesthetic faithful to the approved **Google Stitch** design system.
+## 📖 What is Locker? (In Plain English)
 
-### Key Highlights
-- **100% Local-Only**: Zero cloud reliance, zero external backend, zero analytics, zero trackers. Your credentials never leave your hardware enclave.
-- **Zero-Knowledge Architecture**: The vault is encrypted under a 256-bit Vault Encryption Key (VEK) generated with cryptographically secure randomness (`Random.secure()`).
-- **Authenticated Encryption**: Uses industry-standard **AES-256-GCM** to ensure confidentiality and tamper detection.
-- **Two-Factor 24-Word Recovery**: 24-word recovery derivation is cryptographically bound to your PIN, preventing anyone who finds the 24 words from decrypting your vault without your PIN.
-- **Security Questions Fallback**: If you forget your PIN, you can restore access via custom security questions protected with 100,000-round PBKDF2 derivation.
-- **Encrypted Backup & Portability**: Export and import tamper-proof `.vault` backup files across devices without exposing plaintext credentials.
+Think of **Locker** as a **personal digital safe inside your phone**. 
+
+In today's world, we have dozens of passwords for email, banking, social media, and work. Many people either use the same weak password everywhere, or trust cloud companies with their master passwords.
+
+**Locker solves this problem without needing the internet:**
+- Everything is stored **locally on your device**.
+- There are **no servers, no cloud databases, and no trackers**.
+- Your passwords are locked behind **bank-grade encryption (AES-256)** that only **you** can open with your **PIN or Fingerprint**.
 
 ---
 
-## 2. Features
+## ✨ Why You’ll Love Locker
 
-| Feature | Description |
+| What You Need | How Locker Helps You |
 | :--- | :--- |
-| **First-Run Onboarding** | Step-by-step wizard: Welcome -> Create PIN -> Confirm PIN -> Enable Biometrics -> Custom Recovery Questions -> 24-Word Recovery Key -> Vault Created. |
-| **Biometric Authentication** | OS `BiometricPrompt` (Fingerprint / Face ID) with seamless fallback to 6-digit PIN. |
-| **Brute-Force Rate Limiting** | Exponential backoff lockout delays (30s, 60s, 300s) after repeated failed PIN attempts. |
-| **Main Vault & Search** | Real-time local search across account titles, usernames/emails, and websites. Passwords are never displayed as plaintext in lists. |
-| **Password Generator** | CSPRNG password generator (12–32 characters, configurable charsets, 4-bar entropy meter). |
-| **Clipboard Auto-Clear** | Prominent copy action with an automatic 30-second background clearance timer to protect system clipboard. |
-| **Auto-Lock Policy** | Configurable auto-lock timer (Immediately, 1m, 5m, 15m) on inactivity or app backgrounding. |
-| **Screen Protection** | Android `FLAG_SECURE` window attribute prevents screenshots, screen recording, and multitasking switcher previews. |
-| **Appearance** | Light, Dark, and System theme modes matching the Google Stitch editorial design tokens. |
+| **Complete Privacy** | 🛡️ **100% Offline.** Locker never connects to the internet. Nobody can hack, leak, or sell your data because it never leaves your physical phone. |
+| **Military-Grade Security** | 🔒 **AES-256-GCM Encryption.** The same standard used by global banks and security agencies. |
+| **Quick & Convenient** | 👆 **Fingerprint & Face Unlock.** Access your passwords in one tap using your phone's biometric sensor. |
+| **Never Get Locked Out** | 🆘 **Two Recovery Options.** Forgot your PIN? Restore your vault safely using your **24-word recovery phrase** or your **secret security questions**. |
+| **Strong Passwords Fast** | 🎲 **Built-in Password Generator.** Create strong, uncrackable passwords of any length with one click. |
+| **Clipboard Protection** | ⏱️ **Auto-Clear Copy.** When you copy a password, Locker automatically wipes it from your clipboard after 30 seconds so other apps can't snoop. |
+| **Spy-Proof Display** | 🚫 **Anti-Screenshot Shield.** The app automatically blocks screenshots and screen recording, protecting your secrets from malicious apps. |
+| **Easy Phone Transfer** | 💾 **Encrypted Backup.** Export an encrypted backup file whenever you want to switch or backup to a new phone. |
+| **Beautiful Dark & Light Modes** | 🎨 **Eye-Friendly Design.** High-contrast, elegant design that's easy to read in both bright sunlight and dark rooms. |
 
 ---
 
-## 3. Technology Stack
+## 🚀 How It Works (3 Easy Steps)
 
-- **Framework**: [Flutter](https://flutter.dev) (v3.47.6 / Dart 3.13.5) with Material 3
-- **State Management**: [Riverpod](https://pub.dev/packages/flutter_riverpod) (Separated Auth, Vault, Theme, and Backup providers)
-- **Cryptography**: [`cryptography`](https://pub.dev/packages/cryptography) (AES-256-GCM, PBKDF2-HMAC-SHA256, CSPRNG) & [`crypto`](https://pub.dev/packages/crypto)
-- **Secure Key Storage**: [`flutter_secure_storage`](https://pub.dev/packages/flutter_secure_storage) (Android Keystore / EncryptedSharedPreferences)
-- **Biometrics**: [`local_auth`](https://pub.dev/packages/local_auth) (Platform native biometric prompt)
-- **Typography**: [Google Fonts](https://pub.dev/packages/google_fonts) (`Manrope` for editorial clarity and `JetBrains Mono` for masked keys and passwords)
+```
+[ Step 1: Setup ] ───> [ Step 2: Save Passwords ] ───> [ Step 3: Fast & Safe Login ]
+Set 6-digit PIN &       Add your accounts, emails       Search & copy passwords
+save 24-word backup      & generate strong passwords     with auto-clearing clipboard
+```
+
+1. **First-Time Setup (30 seconds):**
+   * Choose a 6-digit PIN.
+   * Enable Fingerprint / Face Unlock for fast access.
+   * Save your **24-Word Recovery Phrase** (or set security questions) in case you ever forget your PIN.
+2. **Add & Organize:**
+   * Tap `+` to add an account (e.g., Google, Netflix, Bank).
+   * Type your password or tap **Generate** to create a strong one automatically.
+3. **Copy & Use:**
+   * Search any account instantly.
+   * Tap copy — paste it into your login screen — and Locker wipes your clipboard automatically after 30 seconds.
 
 ---
 
-## 4. Project Structure
+## 🔑 What Happens If You Forget Your PIN?
 
+Unlike cloud services that require email resets (which can be hacked), Locker gives you two offline recovery methods:
+
+1. **Option A: 24-Word Recovery Phrase + PIN**  
+   Use your secret 24-word phrase to securely restore your vault. Because it is cryptographically paired with your PIN, anyone who accidentally finds your word list cannot unlock your vault without your PIN.
+2. **Option B: Secret Security Questions**  
+   If you ever forget your PIN, you can answer the 3 personal security questions you created during setup to reset your PIN and regain entry immediately.
+
+---
+
+## 📱 App Highlights & Features Walkthrough
+
+### 1. 🛡️ Main Vault & Fast Search
+* View all your accounts in a clean, alphabetical list.
+* Search instantly by website name, app title, or username/email.
+* Passwords stay masked with dots (`••••••••`) until you tap to view or copy.
+
+### 2. 🎲 Built-in Password Generator
+* Choose password length (12 to 32 characters).
+* Toggle uppercase letters, numbers, and symbols.
+* Live strength meter shows how secure your password is.
+
+### 3. ⏱️ Auto-Lock & Brute Force Protection
+* Choose when the app locks automatically (Immediately, 1 min, 5 min, or 15 min).
+* If someone tries guessing your PIN repeatedly, Locker locks them out with increasing delays (30 seconds, 1 minute, 5 minutes).
+
+### 4. 💾 Backup & Restore
+* **Export Backup:** Creates an encrypted `.vault` file on your phone.
+* **Import Backup:** Restore all your accounts on a new phone with 1 tap.
+
+---
+
+## 🛠️ Technical Details (For Developers & Engineers)
+
+For developers curious about how Locker is built under the hood:
+
+### Tech Stack
+- **Framework:** [Flutter](https://flutter.dev) (v3.47.6 / Dart 3.13.5) with Material 3
+- **State Management:** [Riverpod](https://pub.dev/packages/flutter_riverpod)
+- **Encryption:** [`cryptography`](https://pub.dev/packages/cryptography) (AES-256-GCM, PBKDF2-HMAC-SHA256 with 100,000 iterations)
+- **Key Storage:** [`flutter_secure_storage`](https://pub.dev/packages/flutter_secure_storage) (Android Keystore / Hardware-backed enclave)
+- **Biometrics:** [`local_auth`](https://pub.dev/packages/local_auth)
+- **Typography:** Google Fonts (`Manrope` & `JetBrains Mono`)
+
+### Cryptographic Key Derivation Flow
+```
+User PIN ───────(PBKDF2 100,000 rounds)──> PIN-KEK ──(AES-GCM Wrap)──┐
+Biometrics ─────(Android Keystore)────────> Bio-KEK ──(AES-GCM Wrap)──┼──> [ 256-bit Vault Key ] ──(AES-256-GCM)──> Vault File
+24 Recovery Words ──(PBKDF2 100k)────────> Rec-KEK ──(AES-GCM Wrap)──┤
+Security Q&A ───(PBKDF2 100k)────────────> Q&A-KEK ──(AES-GCM Wrap)──┘
+```
+
+### Folder Structure
 ```
 lib/
-├── app/
-│   ├── providers.dart           # Riverpod state providers and notifiers
-│   └── theme.dart               # Stitch design tokens, typography, and theme
+├── app/                  # Riverpod providers & theme configuration
 ├── core/
-│   ├── crypto/
-│   │   └── crypto_service.dart  # AES-256-GCM, PBKDF2, CSPRNG generator
-│   ├── error/
-│   │   └── failures.dart        # Strongly-typed domain failures
-│   ├── storage/
-│   │   ├── secure_key_store.dart       # Keystore-backed key storage
-│   │   └── encrypted_vault_storage.dart # AES-GCM encrypted database IO
-│   └── utils/
-│       ├── bip39_words.dart     # BIP-39 mnemonic phrase utility
-│       ├── clipboard_helper.dart # Clipboard auto-clear controller
-│       └── safe_logger.dart     # Zero-leakage safe logging utility
+│   ├── crypto/           # AES-256-GCM, PBKDF2, CSPRNG algorithms
+│   ├── storage/          # Keystore & encrypted file storage
+│   └── utils/            # BIP-39 wordlist, clipboard helpers, safe logger
 ├── features/
-│   ├── auth/
-│   │   └── lock_screen.dart     # Stitch UI PIN pad & biometric challenge
-│   ├── onboarding/
-│   │   └── onboarding_screen.dart # Step-by-step first-run wizard
-│   ├── password_generator/
-│   │   └── password_generator_sheet.dart # Entropy meter & CSPRNG generator
-│   ├── recovery/
-│   │   └── recovery_screen.dart # Emergency recovery with words or questions
-│   ├── settings/
-│   │   └── settings_screen.dart # Stitch settings & backup export/import
-│   └── vault/
-│       ├── add_edit_password_screen.dart # Form for credentials
-│       ├── main_vault_screen.dart        # Search, hero card, account list
-│       └── password_details_sheet.dart   # Obfuscated detail & copy
-├── models/
-│   ├── vault_database.dart      # Database collection & serialization
-│   └── vault_entry.dart         # Vault record data model
-├── repositories/
-│   └── vault_repository.dart    # Abstract interface & local implementation
-├── services/
-│   ├── auth_service.dart        # Authentication, lockout, and PIN logic
-│   ├── backup_service.dart      # .vault backup export, integrity, restore
-│   └── recovery_service.dart    # Zero-knowledge key unwrapping
-└── main.dart                    # App bootstrap & lifecycle observer
+│   ├── auth/             # PIN pad & biometric authentication
+│   ├── onboarding/       # Setup wizard & recovery configuration
+│   ├── password_generator/# Password generator dialog & entropy calculator
+│   ├── recovery/         # 24-word and security question recovery flows
+│   ├── settings/         # Theme switcher, auto-lock, backup export/import
+│   └── vault/            # Account list, add/edit form, password viewer
+├── models/               # Vault database & entry data models
+├── repositories/         # Local database repository implementation
+└── services/             # Auth, recovery, and backup management services
 ```
 
 ---
 
-## 5. Security Architecture
+## 💻 How to Build From Source
 
-### Key Hierarchy
-```
-User PIN ──(PBKDF2 100k)──> PIN-KEK ──(AES-GCM Wrap)──> [ Vault Encryption Key ] ──(AES-256-GCM)──> Encrypted Vault
-Biometrics ──(Keystore)───> Bio-KEK ──(AES-GCM Wrap)──> [    (256-bit CSPRNG)   ]
-24 Words ──(PBKDF2 100k)──> Rec-KEK ──(AES-GCM Wrap)──> [                      ]
-3 Questions ─(PBKDF2)─────> Q&A-KEK ──(AES-GCM Wrap)──> [                      ]
-```
+### Prerequisites
+- [Flutter SDK](https://flutter.dev/docs/get-started/install) (3.24+ recommended)
+- Android Studio / VS Code with Flutter extension
+- Java JDK 17
 
-- For detailed specifications, see:
-  - [docs/security/threat-model.md](file:///d:/Vautlkey/docs/security/threat-model.md)
-  - [docs/security/key-management.md](file:///d:/Vautlkey/docs/security/key-management.md)
-  - [docs/security/recovery.md](file:///d:/Vautlkey/docs/security/recovery.md)
-  - [SECURITY_REVIEW.md](file:///d:/Vautlkey/SECURITY_REVIEW.md)
+### Steps
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/taslimahmedtamim/locker.git
+   cd locker
+   ```
 
----
+2. **Install dependencies:**
+   ```bash
+   flutter pub get
+   ```
 
-## 6. How to Build & Test
+3. **Run code analyzer & unit tests:**
+   ```bash
+   dart analyze
+   flutter test
+   ```
 
-### Dependencies
-Dependencies are managed via `pubspec.yaml`. To install:
-```bash
-flutter pub get
-```
+4. **Run on an Android device or emulator:**
+   ```bash
+   flutter run
+   ```
 
-### Static Analysis & Lints
-```bash
-dart analyze
-```
-
-### Run Tests
-```bash
-flutter test
-```
-
-### Build APK
-```bash
-flutter build apk --release
-```
+5. **Build the release APK:**
+   ```bash
+   flutter build apk --release
+   ```
+   The APK will be generated at `build/app/outputs/flutter-apk/app-release.apk`.
 
 ---
 
-## 7. Known Limitations (Version 1)
-1. **Device-Bound**: Version 1 is strictly offline. If the phone is permanently lost without an exported `.vault` backup file and recovery key, data cannot be recovered.
-2. **Root Compromise**: If the underlying Android OS is rooted with malicious kernel software, user-space memory protection cannot be guaranteed.
+## 👤 Author & Credits
+
+* **Creator & Lead Architect:** **Taslim Ahmed Tamim**  
+* **GitHub:** [@taslimahmedtamim](https://github.com/taslimahmedtamim)  
+* **Repository:** [github.com/taslimahmedtamim/locker](https://github.com/taslimahmedtamim/locker)
 
 ---
 
-## 8. Future Roadmap (Version 2)
-The repository architecture (`VaultRepository`) is designed as an abstraction to allow future cloud synchronization:
-- Client-side end-to-end encrypted sync payloads.
-- Multi-device syncing across Android, iOS, and desktop companions.
-- Zero-knowledge remote encrypted backups.
+## 📄 License
+This project is open-source. See the repository for details.
